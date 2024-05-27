@@ -31,9 +31,6 @@ pida dos números y que devuelva el resultado de la operación seleccionada. Ade
 una vez que termine de realizar la operación le pregunte si desea realizar otro cálculo.
 */
 
-
-using System.Xml;
-
 int opcion;
 float num1, num2;
 
@@ -98,5 +95,5 @@ float multiplicacion(float num1, float num2)
 
 float division(float num1, float num2)
 {
-    return num1 * num2;
+    return num1 / num2;
 }
