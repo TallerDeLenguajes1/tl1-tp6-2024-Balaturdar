@@ -114,7 +114,7 @@ Luego de esto, solicite dos números al usuario y determine:
 Para TODOS los casos, no olvide contemplar siempre el caso de que el usuario no
 ingrese un número válido.
 */
-
+/*
 bool aux = true;
 float num,num2;
 
@@ -157,4 +157,174 @@ if (num > num2){
 }else{
     Console.WriteLine("Ambos numeros ingresados son iguales: " + num + " y " + num2);
 }
+*/
+//------------------------------------------------------------------------------------------------
+/*
+Ejercicio 4.
+Realizar los siguientes ejercicios
+Dada una cadena (un string) de texto ingresada por el usuario, realice las siguientes
+tarea:
+*/
+Console.WriteLine("Ingrese una cadena de texto");
+string cadena = Console.ReadLine();
 
+//● Obtener la longitud de la cadena y muestre por pantalla.
+
+Console.WriteLine("Longitud de la cadena es: " +cadena.Length);
+
+
+//● A partir de una segunda cadena ingresada por el usuario, concatene ambas cadenas distintas.
+
+Console.WriteLine("Ingrese una segunda cadena de texto");
+string cadena2 = Console.ReadLine();
+
+string cadenasConcatendas = string.Concat(cadena, cadena2);
+Console.WriteLine("Cadenas concatenadas: " + cadenasConcatendas);
+
+//● Extraer una subcadena de la cadena ingresada.
+string subcadena = cadena2.Substring(0, cadena2.Length/2);
+Console.WriteLine("Una subcadena de la cadena 2: " + subcadena);
+
+/*● Utilizando la calculadora creada anteriormente realizar las operaciones de dos números y mostrar por pantalla y mostrar en texto el resultado. Por ejemplo para la suma sería: “la suma de “ num1 “ y de” num2 “ es igual a: ” resultado. Donde num1, num2 y resultados son los sumandos y el resultado de la operación
+respectivamente.
+Nota: Busque el comportamiento del Método ToString();*/
+
+int opc;
+float num1, num2;
+bool aux;
+
+do{
+    Console.WriteLine("***********************");
+    Console.WriteLine("**      1- Suma      **");
+    Console.WriteLine("**      2- resta     **");
+    Console.WriteLine("** 3- multiplicacion **");
+    Console.WriteLine("**    4- division    **");
+    Console.WriteLine("**      5- salir     **");
+    Console.WriteLine("***********************");
+
+    do{
+    Console.WriteLine("elija una opcion");
+    aux = int.TryParse(Console.ReadLine(), out opc);
+    if(!aux){
+        Console.WriteLine("Debe ingresar un numero");
+    }
+    } while (!aux);
+    
+    do{
+    Console.WriteLine("Ingrese el primer numero: ");
+    aux = float.TryParse(Console.ReadLine(), out num1);
+    if(!aux){
+        Console.WriteLine("Debe ingresar un numero");
+    }
+    } while (!aux);
+
+    do{
+    Console.WriteLine("Ingrese el segundo numero: ");
+    aux = float.TryParse(Console.ReadLine(), out num2);
+    if(!aux){
+        Console.WriteLine("Debe ingresar un numero");
+    }
+    } while (!aux);
+
+    switch (opc){
+        case 1:
+            Console.WriteLine("La suma entre "+ num1.ToString() + " y " + num2.ToString() + " es: " + (num1+num2).ToString());
+            break;
+        case 2:
+            Console.WriteLine("La Resta entre "+ num1.ToString() + " y " + num2.ToString() + " es: " + (num1-num2).ToString());
+            break;
+        case 3:
+            Console.WriteLine("El producto entre "+ num1.ToString() + " y " + num2.ToString() + " es: " + (num1*num2).ToString());
+            break;
+        case 4:
+            if(num2 == 0){
+                Console.WriteLine("El divisor no debe ser cero");
+                break;
+            }
+            Console.WriteLine("La division de "+ num1.ToString() + " en " + num2.ToString() + " es: " + (num1/num2).ToString());
+            break;
+    }
+    if(opc == 5){
+        break;
+    }else{
+        Console.WriteLine("¿Desea realizar otro calculo? S/N");
+        opc = ("N".Equals(Console.ReadLine()))? 5 : 0;
+    }
+
+} while(opc != 5);
+
+
+//● Recorrer la cadena de texto con un ciclo Foreach e ir mostrando elemento por elemento en pantalla
+
+Console.WriteLine("Recorriendo cadena");
+foreach (char c in cadena)
+{
+    Console.WriteLine(c);
+}
+
+//● Buscar la ocurrencia de una palabra determinada en la cadena ingresada
+
+Console.WriteLine("Buscando Ocurrencia de una palabra deerminada en la cadena ingresada");
+Console.WriteLine("Ingrese la palabra a buscar:");
+string palabra = Console.ReadLine();
+int posicion = cadena.IndexOf(palabra);
+if (posicion != -1)
+{
+    Console.WriteLine($"La palabra '{palabra}' se encuentra en la posición {posicion}");
+}
+else
+{
+    Console.WriteLine($"La palabra '{palabra}' no se encuentra en la cadena");
+}
+
+
+//● Convierta la cadena a mayúsculas y luego a minúsculas.
+Console.WriteLine("Cadena en mayusculas: " + cadena.ToUpper());
+Console.WriteLine("Cadena en minusculas: " + cadena.ToLower());
+
+//Ingrese una cadena separada por caracteres que usted determine y muestre por pantalla los resultados (Revisar el comportamiento de split())
+
+Console.WriteLine("Ingrese una cadena separada por guion '-'':");
+string cadenaSeparada = Console.ReadLine();
+string[] partes = cadenaSeparada.Split('-');
+    //recorro la matriz
+    foreach (string parte in partes)
+    {
+        Console.WriteLine(parte);
+    }
+
+//● Siguiendo con el ejemplo de la calculadora (ejercicio 2) ingrese una ecuación simple como cadena de caracteres y que el sistema lo resuelva. Por ej. ingresepor pantalla “582+2” y que le devuelva la suma de 582 con 2
+
+Console.WriteLine("Ingrese una ecuación simple con un operador '+' o '-' o '*' o '/'(por ejemplo 582+2): ");
+string ecuacionCadena = Console.ReadLine();
+int a, b;
+
+if (ecuacionCadena.Contains("+"))
+{
+    partes = ecuacionCadena.Split('+'); //string [] partes ya declarado lo vuelvo a usar
+    int.TryParse(partes[0], out a);
+    int.TryParse(partes[1], out b);
+    Console.WriteLine("Resultado: " + (a + b));
+}
+else 
+if (ecuacionCadena.Contains("-"))
+{
+    partes = ecuacionCadena.Split('-');
+    int.TryParse(partes[0], out a);
+    int.TryParse(partes[1], out b);
+    Console.WriteLine("Resultado: " + (a - b));
+}
+else if (ecuacionCadena.Contains("*"))
+{
+    partes = ecuacionCadena.Split('*');
+    int.TryParse(partes[0], out a);
+    int.TryParse(partes[1], out b);
+    Console.WriteLine("Resultado: " + (a * b));
+}
+else if (ecuacionCadena.Contains("/"))
+{
+    partes = ecuacionCadena.Split('/');
+    int.TryParse(partes[0], out a);
+    int.TryParse(partes[1], out b);
+    Console.WriteLine("Resultado: " + (a / b));
+}
