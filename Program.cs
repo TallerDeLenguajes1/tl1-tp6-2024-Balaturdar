@@ -30,7 +30,7 @@ a partir de un menú para seleccionar la opción a elegir y que luego
 pida dos números y que devuelva el resultado de la operación seleccionada. Además
 una vez que termine de realizar la operación le pregunte si desea realizar otro cálculo.
 */
-
+/*
 int opcion;
 float num1, num2;
 
@@ -97,3 +97,64 @@ float division(float num1, float num2)
 {
     return num1 / num2;
 }
+*/
+
+/*
+    Ejercicio 3. Ingrese al Branch CalculadoraV2 para implementar las mejoras en la
+calculadora.. Solicite al usuario un número y muestre por pantalla:
+● El valor absoluto de un número
+● El cuadrado
+● La raíz cuadrada
+● El seno
+● El Coseno
+● La parte entera de un tipo float.
+Luego de esto, solicite dos números al usuario y determine:
+● El Máximo entre los dos números
+● El Mínimo entre los dos números
+Para TODOS los casos, no olvide contemplar siempre el caso de que el usuario no
+ingrese un número válido.
+*/
+
+bool aux = true;
+float num,num2;
+
+do{
+    Console.WriteLine("Ingresar un numero");
+    aux = float.TryParse(Console.ReadLine(), out num);
+    if(!aux){
+        Console.WriteLine("Debe ingresar un numero");
+    }
+} while (!aux);
+
+Console.WriteLine("El valor absoluto del numero es: " + Math.Abs(num));
+Console.WriteLine("El cuadrado del numero ingresado es: " + (num*num));
+Console.WriteLine("La raiz cuadrada del numero ingresado es: " + Math.Sqrt(num));
+Console.WriteLine("El seno del numero ingresado es: " +  Math.Sin(num));
+Console.WriteLine("El coseno del numero ingresado es: " + Math.Cos(num));
+Console.WriteLine("La parte entera del numero ingresado es: " + Math.Truncate(num));
+
+do{
+    Console.WriteLine("Ingresar el primer numero");
+    aux = float.TryParse(Console.ReadLine(), out num);
+    if(!aux){
+        Console.WriteLine("Debe ingresar un numero");
+    }
+} while (!aux);
+do{
+    Console.WriteLine("Ingresar el segundo numero");
+    aux = float.TryParse(Console.ReadLine(), out num2);
+    if(!aux){
+        Console.WriteLine("Debe ingresar un numero");
+    }
+} while (!aux);
+
+if (num > num2){
+    Console.WriteLine("El maximo entre los dos numeros es el primer numero: " + num);
+    Console.WriteLine("El minimo entre los dos numeros es el segundo numero: " + num2);
+}else if (num<num2){
+    Console.WriteLine("El maximo entre los dos numeros es el segundo numero: " + num2);
+    Console.WriteLine("El minimo entre los dos numeros es el primer numero: " + num);
+}else{
+    Console.WriteLine("Ambos numeros ingresados son iguales: " + num + " y " + num2);
+}
+
